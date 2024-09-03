@@ -1,4 +1,6 @@
-﻿using DeviantArt.Net.Client.Authentication;
+﻿using System.Net;
+using DeviantArt.Net.Client.Authentication;
+using DeviantArt.Net.Exceptions;
 using DeviantArt.Net.Models;
 using Refit;
 
@@ -20,22 +22,44 @@ public class AuthenticatedDeviantArtApiClient
 
         _api = RestService.For<IDeviantArtApi>(httpClient);
     }
-    public Task<PlaceboResponse> isTokenValidAsync()
+    public Task<PlaceboResponse> IsTokenValidAsync()
     {
         return _api.CheckTokenValidityAsync();
     }
 
-    public Task<Deviation> GetDeviationAsync(string deviationId)
+    public async Task<Deviation> GetDeviationAsync(string deviationId)
     {
-        return _api.GetDeviationAsync(deviationId);
+        try
+        {
+            return await _api.GetDeviationAsync(deviationId);
+        }
+        catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
+        {
+            throw new UnauthorizedException(ex.Content);
+        }
+        catch (ApiException ex)
+        {
+            throw new DeviantArtApiException(ex.StatusCode, ex.Content);
+        }
     }
 
-    public Task<DeviantArtApiResponse<Deviation>> GetNewestDeviationsAsync(int limit, int offset, bool matureContent)
+    public async Task<DeviantArtApiResponse<Deviation>> BrowseHomeDeviationsAsync(int limit, int offset, bool matureContent)
     {
-        return _api.GetHomeDeviationsAsync(limit, offset, matureContent);
+        try
+        {
+            return await _api.GetHomeDeviationsAsync(limit, offset, matureContent);
+        }
+        catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
+        {
+            throw new UnauthorizedException(ex.Content);
+        }
+        catch (ApiException ex)
+        {
+            throw new DeviantArtApiException(ex.StatusCode, ex.Content);
+        }
     }
     
-    public Task<BrowseTagsResponse> BrowseTagsAsync(
+    public async Task<BrowseTagsResponse> BrowseTagsAsync(
         string tag, 
         string? cursor = null, 
         int? offset = null, 
@@ -43,7 +67,18 @@ public class AuthenticatedDeviantArtApiClient
         bool? withSession = null,
         bool? matureContent = null)
     {
-        return _api.BrowseTagsAsync(tag, cursor, offset, limit, withSession, matureContent);
+        try
+        {
+            return await _api.BrowseTagsAsync(tag, cursor, offset, limit, withSession, matureContent);
+        }
+        catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
+        {
+            throw new UnauthorizedException(ex.Content);
+        }
+        catch (ApiException ex)
+        {
+            throw new DeviantArtApiException(ex.StatusCode, ex.Content);
+        }
     }
     
 }

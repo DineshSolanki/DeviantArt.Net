@@ -2,7 +2,7 @@
 
 namespace DeviantArt.Net.Models;
 
-public class DeviantArtAccessToken
+public class DeviantArtAccessToken : ErrorResponse
 {
     [JsonPropertyName("access_token")]
     public string AccessToken { get; set; }
@@ -12,15 +12,7 @@ public class DeviantArtAccessToken
 
     [JsonPropertyName("expires_in")]
     public int ExpiresIn { get; set; }
-
-    [JsonPropertyName("error")]
-    public string ErrorType { get; set; }
-
-    [JsonPropertyName("error_description")]
-    public string ErrorDescription { get; set; }
-
-    [JsonPropertyName("status")]
-    public string Status { get; set; }
+    
     
     public DateTimeOffset TokenAcquiredAt { get; set; }
 
