@@ -39,18 +39,7 @@ public class Client
 
     public async Task<Deviation> GetDeviationAsync(string deviationId)
     {
-        try
-        {
-            return await _api.GetDeviationAsync(deviationId);
-        }
-        catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
-        {
-            throw new UnauthorizedException(ex.Content);
-        }
-        catch (ApiException ex)
-        {
-            throw new DeviantArtApiException(ex.StatusCode, ex.Content);
-        }
+        return await _api.GetDeviationAsync(deviationId);
     }
 
     public async Task<Deviation> GetDeviationAsync(Deviation deviation)
@@ -60,18 +49,7 @@ public class Client
 
     public async Task<DeviantArtApiResponse<Deviation>> BrowseHomeDeviationsAsync(int limit, int offset, bool matureContent)
     {
-        try
-        {
-            return await _api.GetHomeDeviationsAsync(limit, offset, matureContent);
-        }
-        catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
-        {
-            throw new UnauthorizedException(ex.Content);
-        }
-        catch (ApiException ex)
-        {
-            throw new DeviantArtApiException(ex.StatusCode, ex.Content);
-        }
+        return await _api.GetHomeDeviationsAsync(limit, offset, matureContent);
     }
     
     public async Task<BrowseTagsResponse> BrowseTagsAsync(
@@ -82,18 +60,7 @@ public class Client
         bool? withSession = null,
         bool? matureContent = null)
     {
-        try
-        {
-            return await _api.BrowseTagsAsync(tag, cursor, offset, limit, withSession, matureContent);
-        }
-        catch (ApiException ex) when (ex.StatusCode == HttpStatusCode.Unauthorized)
-        {
-            throw new UnauthorizedException(ex.Content);
-        }
-        catch (ApiException ex)
-        {
-            throw new DeviantArtApiException(ex.StatusCode, ex.Content);
-        }
+        return await _api.BrowseTagsAsync(tag, cursor, offset, limit, withSession, matureContent);
     }
     
 }
