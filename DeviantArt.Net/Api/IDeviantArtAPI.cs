@@ -1,7 +1,4 @@
-﻿using DeviantArt.Net.Models;
-using Refit;
-
-namespace DeviantArt.Net.Api;
+﻿namespace DeviantArt.Net.Api;
 
 internal interface IDeviantArtApi
 {

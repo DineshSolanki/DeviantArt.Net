@@ -1,7 +1,5 @@
 ﻿namespace DeviantArt.Net.Models;
 
-using System.Text.Json.Serialization;
-
 public class Deviation
 {
     [JsonPropertyName("deviationid")]

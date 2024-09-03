@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.Serialization;
-
-namespace DeviantArt.Net.Models;
+﻿namespace DeviantArt.Net.Models;
 
 public enum Scope
 {

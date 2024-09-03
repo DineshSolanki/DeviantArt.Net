@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace DeviantArt.Net.Models;
+﻿namespace DeviantArt.Net.Models;
 
 public enum GrantType
 {

@@ -1,7 +1,4 @@
-﻿using System.Net;
-using DeviantArt.Net.Exceptions;
-
-namespace DeviantArt.Net.Api.Handler;
+﻿namespace DeviantArt.Net.Api.Handler;
 
 internal class RetryHandler(HttpMessageHandler innerHandler) : DelegatingHandler(innerHandler)
 {

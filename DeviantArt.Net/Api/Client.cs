@@ -1,11 +1,6 @@
-﻿using System.Net;
-using DeviantArt.Net.Api.Handler;
-using DeviantArt.Net.Exceptions;
-using DeviantArt.Net.Models;
+﻿using DeviantArt.Net.Api.Handler;
 using DeviantArt.Net.Modules;
-using DeviantArt.Net.Modules.Client;
-using DeviantArt.Net.Modules.TokenStore;
-using Refit;
+using DeviantArt.Net.Modules.Util.Formatters;
 
 namespace DeviantArt.Net.Api;
 

@@ -1,5 +1,4 @@
 ﻿using System.Net.Http.Headers;
-using DeviantArt.Net.Modules.Client;
 
 namespace DeviantArt.Net.Api.Handler;
 

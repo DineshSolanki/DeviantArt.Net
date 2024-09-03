@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Net;
 using System.Text.Json;
-using DeviantArt.Net.Models;
 
 namespace DeviantArt.Net.Exceptions;
 

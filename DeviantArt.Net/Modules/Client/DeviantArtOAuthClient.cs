@@ -1,11 +1,6 @@
 ﻿using System.Diagnostics;
-using System.Net;
 using System.Web;
-using DeviantArt.Net.Exceptions;
-using DeviantArt.Net.Models;
 using DeviantArt.Net.Modules.Client.Authentication;
-using DeviantArt.Net.Modules.TokenStore;
-using Refit;
 
 namespace DeviantArt.Net.Modules.Client;
 

@@ -1,7 +1,4 @@
-﻿using DeviantArt.Net.Models;
-using DeviantArt.Net.Modules.TokenStore;
-
-namespace DeviantArt.Net.Modules.Client.Authentication;
+﻿namespace DeviantArt.Net.Modules.Client.Authentication;
 
 internal class TokenManager(ITokenStore tokenStore, DeviantArtOAuthClient oauthClient)
 {
