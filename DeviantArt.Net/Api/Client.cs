@@ -17,6 +17,11 @@ public class Client
         : this(new DeviantArtOAuthClient(clientId, clientSecret, tokenStore))
     {
     }
+    
+    public Client(string clientId, string clientSecret, ITokenStore tokenStore, string redirectUri, Scope scope)
+        : this(new DeviantArtOAuthClient(clientId, clientSecret, tokenStore, redirectUri, scope))
+    {
+    }
     private Client(DeviantArtOAuthClient oauthClient)
     {
         var handler = new AuthenticatedHttpClientHandler(oauthClient)
@@ -51,6 +56,11 @@ public class Client
         {
             throw new DeviantArtApiException(ex.StatusCode, ex.Content);
         }
+    }
+
+    public async Task<Deviation> GetDeviationAsync(Deviation deviation)
+    {
+        return await GetDeviationAsync(deviation.DeviationId);
     }
 
     public async Task<DeviantArtApiResponse<Deviation>> BrowseHomeDeviationsAsync(int limit, int offset, bool matureContent)

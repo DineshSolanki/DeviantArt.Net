@@ -1,10 +1,7 @@
 ﻿using DeviantArt.Net.Models;
 using Refit;
 
-namespace DeviantArt.Net.Client.Authentication;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
+namespace DeviantArt.Net.Modules.Client.Authentication;
 
 internal interface IDeviantArtOAuthApi
 {

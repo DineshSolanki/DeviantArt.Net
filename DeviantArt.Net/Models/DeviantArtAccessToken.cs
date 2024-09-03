@@ -13,6 +13,9 @@ public class DeviantArtAccessToken : ErrorResponse
     [JsonPropertyName("expires_in")]
     public int ExpiresIn { get; set; }
     
+    [JsonIgnore]
+    public GrantType GrantType { get; set; }
+    
     
     public DateTimeOffset TokenAcquiredAt { get; set; }
 

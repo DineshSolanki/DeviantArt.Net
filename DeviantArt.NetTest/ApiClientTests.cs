@@ -1,7 +1,6 @@
 ﻿using System.Text.Json;
 using DeviantArt.Net.Api;
 using DeviantArt.Net.Models;
-using DeviantArt.Net.Modules.Client.Authentication;
 using DeviantArt.Net.Modules.TokenStore;
 using DeviantArt.NetTest.Util;
 
@@ -17,10 +16,22 @@ public class ClientTests
 
     public ClientTests()
     {
-        _client = new Client(Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_ID")!,
-            Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_SECRET")!, _tokenStore);
+        _client = GetClientByGrantType(GrantType.ClientCredentials);
     }
 
+    private Client GetClientByGrantType(GrantType grantType)
+    {
+        return grantType switch
+        {
+            GrantType.AuthorizationCode => new Client(Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_ID")!,
+                Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_SECRET")!, _tokenStore, "http://localhost:8451/",
+                Scope.Browse),
+            GrantType.ClientCredentials => new Client(Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_ID")!,
+                Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_SECRET")!, _tokenStore),
+            GrantType.Implicit => throw new NotImplementedException(),
+            _ => throw new ArgumentOutOfRangeException(nameof(grantType), grantType, null)
+        };
+    }
     [TestInitialize]
     public void Setup()
     {

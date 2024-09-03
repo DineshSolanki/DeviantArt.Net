@@ -1,11 +1,10 @@
 ﻿using DeviantArt.Net.Models;
-using DeviantArt.Net.Modules.TokenStore;
 
-namespace DeviantArt.Net.Modules.Client.Authentication;
+namespace DeviantArt.Net.Modules.TokenStore;
 
 public sealed class InMemoryTokenStore : ITokenStore
 {
-    private static DeviantArtAccessToken CurrentToken { get; set; }
+    private static DeviantArtAccessToken? CurrentToken { get; set; }
 
     public Task<DeviantArtAccessToken> StoreTokenAsync(DeviantArtAccessToken token)
     {
@@ -13,7 +12,7 @@ public sealed class InMemoryTokenStore : ITokenStore
         return Task.FromResult(token);
     }
 
-    public Task<DeviantArtAccessToken> GetTokenAsync()
+    public Task<DeviantArtAccessToken?> GetTokenAsync()
     {
         return Task.FromResult(CurrentToken);
     }
