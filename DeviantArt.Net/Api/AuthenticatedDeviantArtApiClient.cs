@@ -1,7 +1,9 @@
 ﻿using System.Net;
+using DeviantArt.Net.Api.Handler;
 using DeviantArt.Net.Client.Authentication;
 using DeviantArt.Net.Exceptions;
 using DeviantArt.Net.Models;
+using DeviantArt.Net.Modules;
 using Refit;
 
 namespace DeviantArt.Net.Api;
@@ -9,15 +11,17 @@ namespace DeviantArt.Net.Api;
 public class AuthenticatedDeviantArtApiClient
 {
     private readonly IDeviantArtApi _api;
-    private readonly DeviantArtOAuthClient _oauthClient;
 
     public AuthenticatedDeviantArtApiClient(DeviantArtOAuthClient oauthClient)
     {
-        _oauthClient = oauthClient;
-
-        var httpClient = new HttpClient(new AuthenticatedHttpClientHandler(_oauthClient))
+        var handler = new AuthenticatedHttpClientHandler(oauthClient)
         {
-            BaseAddress = new Uri("https://www.deviantart.com")
+            InnerHandler = new RetryHandler(new HttpClientHandler())
+        };
+
+        var httpClient = new HttpClient(handler)
+        {
+            BaseAddress = new Uri(Defaults.BaseAddress)
         };
 
         _api = RestService.For<IDeviantArtApi>(httpClient);

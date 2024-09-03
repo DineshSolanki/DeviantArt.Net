@@ -11,8 +11,4 @@
       <PackageReference Include="Refit" Version="7.1.2" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Modules\" />
-    </ItemGroup>
-
 </Project>

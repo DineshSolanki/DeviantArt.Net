@@ -1,35 +1,43 @@
-﻿using DeviantArt.Net.Models;
+﻿using DeviantArt.Net.Exceptions;
+using DeviantArt.Net.Models;
+using DeviantArt.Net.Modules;
 using Refit;
 
 namespace DeviantArt.Net.Client.Authentication;
 
-public class DeviantArtOAuthClient
+public class DeviantArtOAuthClient(string clientId, string clientSecret, ITokenStore tokenStore)
 {
-    private readonly string _clientId;
-    private readonly string _clientSecret;
-    private readonly IDeviantArtOAuthApi _api;
-    private readonly ITokenStore _tokenStore;
-
-    public DeviantArtOAuthClient(string clientId, string clientSecret, ITokenStore tokenStore)
-    {
-        _clientId = clientId;
-        _clientSecret = clientSecret;
-        _tokenStore = tokenStore;
-
-        _api = RestService.For<IDeviantArtOAuthApi>("https://www.deviantart.com");
-    }
+    private readonly string _clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
+    private readonly string _clientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
+    private readonly IDeviantArtOAuthApi _api = RestService.For<IDeviantArtOAuthApi>(Defaults.BaseAddress);
+    private readonly ITokenStore _tokenStore = tokenStore ?? throw new ArgumentNullException(nameof(tokenStore));
 
     public async Task<DeviantArtAccessToken> GetClientCredentialTokenAsync()
     {
-        var token = await _api.GetOAuth2Token(new Dictionary<string, string>
+        try
         {
-            {"client_id", _clientId},
-            {"client_secret", _clientSecret},
-            {"grant_type", "client_credentials"}
-        });
-        token.TokenAcquiredAt = DateTimeOffset.UtcNow;
-        await _tokenStore.StoreTokenAsync(token);
-        return token;
+            var token = await _api.GetOAuth2Token(new Dictionary<string, string>
+            {
+                {"client_id", _clientId},
+                {"client_secret", _clientSecret},
+                {"grant_type", "client_credentials"}
+            });
+            token.TokenAcquiredAt = DateTimeOffset.UtcNow;
+            await _tokenStore.StoreTokenAsync(token);
+            return token;
+        }
+        catch (ApiException ex)
+        {
+            var contentType = ex.ContentHeaders?.ContentType?.MediaType;
+            if (contentType != null && contentType.Contains("text/html"))
+            {
+                throw new InvalidClientException("Invalid client ID or secret.");
+            }
+            else
+            {
+                throw new DeviantArtApiException(ex.StatusCode, ex.Content);
+            }
+        }
     }
 
     public async Task<DeviantArtAccessToken> AcquireTokenAsync()
