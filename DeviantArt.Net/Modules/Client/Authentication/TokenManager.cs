@@ -1,9 +1,10 @@
 ﻿using DeviantArt.Net.Client.Authentication;
 using DeviantArt.Net.Models;
+using DeviantArt.Net.Modules.TokenStore;
 
 namespace DeviantArt.Net.Modules.Client.Authentication;
 
-public class TokenManager(ITokenStore tokenStore, DeviantArtOAuthClient oauthClient)
+internal class TokenManager(ITokenStore tokenStore, DeviantArtOAuthClient oauthClient)
 {
     public async Task<DeviantArtAccessToken> AcquireTokenAsync()
     {

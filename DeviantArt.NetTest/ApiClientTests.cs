@@ -1,26 +1,24 @@
 ﻿using System.Text.Json;
 using DeviantArt.Net.Api;
-using DeviantArt.Net.Client.Authentication;
 using DeviantArt.Net.Models;
 using DeviantArt.Net.Modules.Client.Authentication;
+using DeviantArt.Net.Modules.TokenStore;
 using DeviantArt.NetTest.Util;
 
 namespace DeviantArt.NetTest;
 
 [TestClass]
-public class AuthenticatedDeviantArtApiClientTests
+public class ClientTests
 {
-    private DeviantArtOAuthClient _oauthClient;
-    private readonly AuthenticatedDeviantArtApiClient _client;
+    private readonly Client _client;
         
         
     private readonly ITokenStore _tokenStore = new InMemoryTokenStore();
 
-    public AuthenticatedDeviantArtApiClientTests()
+    public ClientTests()
     {
-        _oauthClient= new DeviantArtOAuthClient(Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_ID")!,
+        _client = new Client(Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_ID")!,
             Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_SECRET")!, _tokenStore);
-        _client = new AuthenticatedDeviantArtApiClient(_oauthClient);
     }
 
     [TestInitialize]

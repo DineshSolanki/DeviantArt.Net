@@ -1,9 +1,9 @@
-﻿namespace DeviantArt.Net.Models;
-
+﻿using DeviantArt.Net.Models;
 using Refit;
-using System.Threading.Tasks;
 
-public interface IDeviantArtApi
+namespace DeviantArt.Net.Api;
+
+internal interface IDeviantArtApi
 {
     [Get("/api/v1/oauth2/placebo")]
     Task<PlaceboResponse> CheckTokenValidityAsync();

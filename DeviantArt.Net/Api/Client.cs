@@ -1,18 +1,23 @@
 ﻿using System.Net;
 using DeviantArt.Net.Api.Handler;
-using DeviantArt.Net.Client.Authentication;
 using DeviantArt.Net.Exceptions;
 using DeviantArt.Net.Models;
 using DeviantArt.Net.Modules;
+using DeviantArt.Net.Modules.Client;
+using DeviantArt.Net.Modules.TokenStore;
 using Refit;
 
 namespace DeviantArt.Net.Api;
 
-public class AuthenticatedDeviantArtApiClient
+public class Client
 {
     private readonly IDeviantArtApi _api;
 
-    public AuthenticatedDeviantArtApiClient(DeviantArtOAuthClient oauthClient)
+    public Client(string clientId, string clientSecret, ITokenStore tokenStore)
+        : this(new DeviantArtOAuthClient(clientId, clientSecret, tokenStore))
+    {
+    }
+    private Client(DeviantArtOAuthClient oauthClient)
     {
         var handler = new AuthenticatedHttpClientHandler(oauthClient)
         {
@@ -26,6 +31,7 @@ public class AuthenticatedDeviantArtApiClient
 
         _api = RestService.For<IDeviantArtApi>(httpClient);
     }
+    
     public Task<PlaceboResponse> IsTokenValidAsync()
     {
         return _api.CheckTokenValidityAsync();

@@ -3,7 +3,7 @@ using DeviantArt.Net.Exceptions;
 
 namespace DeviantArt.Net.Api.Handler;
 
-public class RetryHandler(HttpMessageHandler innerHandler) : DelegatingHandler(innerHandler)
+internal class RetryHandler(HttpMessageHandler innerHandler) : DelegatingHandler(innerHandler)
 {
     private const int MaxRetries = 3;
     private const int InitialDelay = 1000; // Initial delay in milliseconds

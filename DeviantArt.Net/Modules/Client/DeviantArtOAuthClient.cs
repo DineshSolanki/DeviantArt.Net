@@ -1,18 +1,19 @@
-﻿using DeviantArt.Net.Exceptions;
+﻿using DeviantArt.Net.Client.Authentication;
+using DeviantArt.Net.Exceptions;
 using DeviantArt.Net.Models;
-using DeviantArt.Net.Modules;
+using DeviantArt.Net.Modules.TokenStore;
 using Refit;
 
-namespace DeviantArt.Net.Client.Authentication;
+namespace DeviantArt.Net.Modules.Client;
 
-public class DeviantArtOAuthClient(string clientId, string clientSecret, ITokenStore tokenStore)
+internal class DeviantArtOAuthClient(string clientId, string clientSecret, ITokenStore tokenStore)
 {
     private readonly string _clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
     private readonly string _clientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
     private readonly IDeviantArtOAuthApi _api = RestService.For<IDeviantArtOAuthApi>(Defaults.BaseAddress);
     private readonly ITokenStore _tokenStore = tokenStore ?? throw new ArgumentNullException(nameof(tokenStore));
 
-    public async Task<DeviantArtAccessToken> GetClientCredentialTokenAsync()
+    internal async Task<DeviantArtAccessToken> GetClientCredentialTokenAsync()
     {
         try
         {
@@ -33,14 +34,12 @@ public class DeviantArtOAuthClient(string clientId, string clientSecret, ITokenS
             {
                 throw new InvalidClientException("Invalid client ID or secret.");
             }
-            else
-            {
-                throw new DeviantArtApiException(ex.StatusCode, ex.Content);
-            }
+
+            throw new DeviantArtApiException(ex.StatusCode, ex.Content);
         }
     }
 
-    public async Task<DeviantArtAccessToken> AcquireTokenAsync()
+    internal async Task<DeviantArtAccessToken> AcquireTokenAsync()
     {
         var token = await _tokenStore.GetTokenAsync();
         if (token?.HasTokenExpired() == false)

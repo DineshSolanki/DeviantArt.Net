@@ -1,9 +1,10 @@
 ﻿using System.Net.Http.Headers;
 using DeviantArt.Net.Client.Authentication;
+using DeviantArt.Net.Modules.Client;
 
-namespace DeviantArt.Net.Api;
+namespace DeviantArt.Net.Api.Handler;
 
-public class AuthenticatedHttpClientHandler(DeviantArtOAuthClient oauthClient)
+internal class AuthenticatedHttpClientHandler(DeviantArtOAuthClient oauthClient)
     : DelegatingHandler(new HttpClientHandler())
 {
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)

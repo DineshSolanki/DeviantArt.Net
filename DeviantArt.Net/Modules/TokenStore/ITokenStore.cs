@@ -1,4 +1,6 @@
-﻿namespace DeviantArt.Net.Models;
+﻿using DeviantArt.Net.Models;
+
+namespace DeviantArt.Net.Modules.TokenStore;
 
 public interface ITokenStore
 {
