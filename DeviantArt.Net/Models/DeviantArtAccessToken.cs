@@ -13,6 +13,12 @@ public class DeviantArtAccessToken : ErrorResponse
     [JsonPropertyName("expires_in")]
     public int ExpiresIn { get; set; }
     
+    [JsonPropertyName("refresh_token")]
+    public string RefreshToken { get; set; }
+    
+    [JsonPropertyName("scope")]
+    public Scope Scope { get; set; }
+    
     [JsonIgnore]
     public GrantType GrantType { get; set; }
     

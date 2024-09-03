@@ -1,8 +1,18 @@
-﻿namespace DeviantArt.Net.Models;
+﻿using System.ComponentModel;
+
+namespace DeviantArt.Net.Models;
 
 public enum GrantType
 {
+    [Description("authorization_code")]
     AuthorizationCode,
+    
+    [Description("implicit")]
     Implicit,
-    ClientCredentials
+    
+    [Description("client_credentials")]
+    ClientCredentials,
+    
+    [Description("refresh_token")]
+    RefreshToken
 }

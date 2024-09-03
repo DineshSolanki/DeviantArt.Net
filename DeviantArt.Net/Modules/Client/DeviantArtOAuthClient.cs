@@ -48,7 +48,18 @@ internal class DeviantArtOAuthClient
         {
             {"client_id", _clientId},
             {"client_secret", _clientSecret},
-            {"grant_type", "client_credentials"}
+            {"grant_type", GrantType.ClientCredentials.GetDescription()}
+        });
+    }
+    
+    internal async Task<DeviantArtAccessToken> RefreshAuthorizationCodeTokenAsync(DeviantArtAccessToken currentToken)
+    {
+        return await RequestTokenAsync(new Dictionary<string, string>
+        {
+            {"client_id", _clientId},
+            {"client_secret", _clientSecret},
+            {"grant_type", GrantType.RefreshToken.GetDescription()},
+            {"refresh_token", currentToken.RefreshToken}
         });
     }
     
@@ -87,7 +98,7 @@ internal class DeviantArtOAuthClient
         {
             {"client_id", _clientId},
             {"client_secret", _clientSecret},
-            {"grant_type", "authorization_code"},
+            {"grant_type", GrantType.AuthorizationCode.GetDescription()},
             {"code", _authorizationCode},
             {"redirect_uri", _redirectUri ?? throw new InvalidOperationException()}
         });
@@ -136,8 +147,12 @@ internal class DeviantArtOAuthClient
         return $"{Defaults.BaseAddress}/oauth2/authorize?{queryString}";
     }
     
-    private static Task<string> HandleRedirectAsync(string redirectUrl)
+    private static Task<string> HandleRedirectAsync(string? redirectUrl)
     {
+        if (string.IsNullOrEmpty(redirectUrl))
+        {
+            throw new InvalidOperationException("Redirect URL is missing.");
+        }
         var uri = new Uri(redirectUrl);
         var query = HttpUtility.ParseQueryString(uri.Query);
         var authCode = query["code"];
@@ -152,7 +167,7 @@ internal class DeviantArtOAuthClient
 
     internal async Task<DeviantArtAccessToken> AcquireTokenAsync()
     {
-        return await _tokenManager.AcquireTokenAsync(_grantType, _redirectUri);
+        return await _tokenManager.AcquireTokenAsync(_grantType);
     }
 
     public Task<DeviantArtAccessToken> GetImplicitTokenAsync()
