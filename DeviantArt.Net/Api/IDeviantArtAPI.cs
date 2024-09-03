@@ -1,6 +1,6 @@
 ﻿namespace DeviantArt.Net.Api;
 
-internal interface IDeviantArtApi
+internal partial interface IDeviantArtApi
 {
     [Get("/api/v1/oauth2/placebo")]
     Task<PlaceboResponse> CheckTokenValidityAsync();

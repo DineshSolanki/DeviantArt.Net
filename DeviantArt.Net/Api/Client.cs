@@ -4,7 +4,7 @@ using DeviantArt.Net.Modules.Util.Formatters;
 
 namespace DeviantArt.Net.Api;
 
-public class Client
+public partial class Client
 {
     private readonly IDeviantArtApi _api;
 
@@ -28,8 +28,11 @@ public class Client
         {
             BaseAddress = new Uri(Defaults.BaseAddress)
         };
-
-        _api = RestService.For<IDeviantArtApi>(httpClient);
+        var settings = new RefitSettings
+        {
+            UrlParameterFormatter = new CustomDateUrlParameterFormatter()
+        };
+        _api = RestService.For<IDeviantArtApi>(httpClient, settings);
     }
     
     public Task<PlaceboResponse> IsTokenValidAsync()

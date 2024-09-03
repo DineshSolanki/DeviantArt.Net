@@ -89,4 +89,13 @@ public class ClientTests
             
         Assert.AreEqual(expectedResponse.Results.Count, result.Results.Count);
     }
+    
+    [TestMethod]
+    public async Task GetDailyDeviationsAsync_ShouldReturnDeviantArtApiResponse()
+    {
+        var date = new DateOnly(2021, 10, 10);
+        var result = await _client.GetDailyDeviationsAsync(date);
+            
+        Assert.IsNotNull(result);
+    }
 }
