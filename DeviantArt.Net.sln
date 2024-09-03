@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviantArt.Net", "DeviantArt.Net\DeviantArt.Net.csproj", "{5096634D-646D-422C-8B83-74B850BE23DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviantArt.NetTest", "DeviantArt.NetTest\DeviantArt.NetTest.csproj", "{3417030C-7105-435F-A671-4411ADD37739}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{5096634D-646D-422C-8B83-74B850BE23DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5096634D-646D-422C-8B83-74B850BE23DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5096634D-646D-422C-8B83-74B850BE23DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3417030C-7105-435F-A671-4411ADD37739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3417030C-7105-435F-A671-4411ADD37739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3417030C-7105-435F-A671-4411ADD37739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3417030C-7105-435F-A671-4411ADD37739}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
