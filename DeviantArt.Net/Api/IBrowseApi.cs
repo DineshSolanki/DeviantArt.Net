@@ -41,7 +41,6 @@ internal partial interface IDeviantArtApi
     [Get("/api/v1/oauth2/browse/topic")]
     Task<BrowseResponse> BrowseTopicAsync(
         [AliasAs("topic")] string topic,
-        [AliasAs("expand")] string? expand = null,
         [AliasAs("cursor")] string? cursor = null,
         [AliasAs("offset")] int? offset = null,
         [AliasAs("limit")] int? limit = null,

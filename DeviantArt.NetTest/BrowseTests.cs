@@ -83,11 +83,7 @@ public class BrowseTests
         
         var expectedResponse = Util.LoadJsonFromFile<BrowseResponse>("ExpectedResponses/Browse/ArtTopicBrowseResponse.json");
             
-        var result = await _client.BrowseTopicAsync(Ids.tagName,expandFields:ExpandFieldBuilder.Build(
-            (User u) => u.Details.JoinDate,
-            (User u) => u.Profile,
-            (User u) => u.Stats
-        ));
+        var result = await _client.BrowseTopicAsync(Ids.tagName);
             
         Assert.AreEqual(expectedResponse.Results.Count, result.Results.Count);
     }

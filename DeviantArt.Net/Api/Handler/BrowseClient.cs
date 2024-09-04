@@ -58,11 +58,9 @@ public partial class Client
         int? offset = null,
         int? limit = null,
         bool withSession = false,
-        bool? matureContent = null,
-        params LambdaExpression[] expandFields)
+        bool? matureContent = null)
     {
-        var expand = FieldSelector.GetFieldsForKeys(expandFields);
-        return await _api.BrowseTopicAsync(topic, expand,cursor, offset, limit, withSession, matureContent);
+        return await _api.BrowseTopicAsync(topic, cursor, offset, limit, withSession, matureContent);
     }
     
     //Fetch topics and deviations from each topic
