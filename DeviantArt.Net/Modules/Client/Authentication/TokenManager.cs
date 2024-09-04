@@ -10,7 +10,7 @@ internal class TokenManager(ITokenStore tokenStore, DeviantArtOAuthClient oauthC
         {
             return await GenerateTokenAsync(grantType);
         }
-        if (currentToken.HasTokenExpired() == false && currentToken.GrantType == grantType)
+        if (currentToken.HasTokenExpired() == false)
         {
             return currentToken;
         }
