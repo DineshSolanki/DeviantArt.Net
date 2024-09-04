@@ -49,21 +49,5 @@ public partial class Client
     {
         return await GetDeviationAsync(deviation.DeviationId);
     }
-
-    public async Task<DeviantArtApiResponse<Deviation>> BrowseHomeDeviationsAsync(int limit, int offset, bool matureContent)
-    {
-        return await _api.GetHomeDeviationsAsync(limit, offset, matureContent);
-    }
-    
-    public async Task<BrowseTagsResponse> BrowseTagsAsync(
-        string tag, 
-        string? cursor = null, 
-        int? offset = null, 
-        int? limit = null, 
-        bool? withSession = null,
-        bool? matureContent = null)
-    {
-        return await _api.BrowseTagsAsync(tag, cursor, offset, limit, withSession, matureContent);
-    }
     
 }

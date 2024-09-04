@@ -1,6 +1,6 @@
 ﻿namespace DeviantArt.Net.Models;
 
-public class BrowseTagsResponse
+public class PaginatedBase<T>
 {
     [JsonPropertyName("has_more")]
     public bool HasMore { get; set; }
@@ -16,13 +16,7 @@ public class BrowseTagsResponse
 
     [JsonPropertyName("estimated_total")]
     public int? EstimatedTotal { get; set; }
-
-    [JsonPropertyName("error_code")]
-    public int? ErrorCode { get; set; }
-
+    
     [JsonPropertyName("results")]
-    public List<Deviation> Results { get; set; }
-
-    [JsonPropertyName("session")]
-    public ApiSession Session { get; set; }
+    public List<T> Results { get; set; }
 }

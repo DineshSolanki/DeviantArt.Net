@@ -442,15 +442,3 @@ public class MotionBook
     [JsonPropertyName("embed_url")]
     public string EmbedUrl { get; set; }
 }
-
-public class DeviantArtApiResponse<T>
-{
-    [JsonPropertyName("results")]
-    public List<T> Results { get; set; }
-
-    [JsonPropertyName("has_more")]
-    public bool HasMore { get; set; }
-
-    [JsonPropertyName("next_offset")]
-    public int NextOffset { get; set; }
-}
