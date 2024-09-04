@@ -1,10 +1,4 @@
-﻿using System.Text.Json;
-using DeviantArt.Net.Api;
-using DeviantArt.Net.Models;
-using DeviantArt.Net.Modules.TokenStore;
-using DeviantArt.NetTest.Utils;
-
-namespace DeviantArt.NetTest;
+﻿namespace DeviantArt.NetTest;
 
 [TestClass]
 public class ClientTests

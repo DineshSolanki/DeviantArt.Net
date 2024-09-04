@@ -1,9 +1,4 @@
-﻿using DeviantArt.Net.Api;
-using DeviantArt.Net.Models;
-using DeviantArt.Net.Modules.Util;
-using DeviantArt.NetTest.Utils;
-
-namespace DeviantArt.NetTest;
+﻿namespace DeviantArt.NetTest;
 
 [TestClass]
 public class BrowseTests

@@ -1,9 +1,4 @@
-﻿using System.Text.Json;
-using DeviantArt.Net.Api;
-using DeviantArt.Net.Models;
-using DeviantArt.Net.Modules.TokenStore;
-
-namespace DeviantArt.NetTest.Utils;
+﻿namespace DeviantArt.NetTest.Utils;
 
 public static class Util
 {
