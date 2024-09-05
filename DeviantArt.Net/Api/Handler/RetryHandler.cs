@@ -1,4 +1,6 @@
-﻿namespace DeviantArt.Net.Api.Handler;
+﻿using System.Text.Json;
+
+namespace DeviantArt.Net.Api.Handler;
 
 internal class RetryHandler(HttpMessageHandler innerHandler) : DelegatingHandler(innerHandler)
 {
@@ -50,12 +52,28 @@ internal class RetryHandler(HttpMessageHandler innerHandler) : DelegatingHandler
         {
             throw new InvalidClientException("Invalid client ID or secret.");
         }
-        throw response.StatusCode switch
+
+        
+        switch (response.StatusCode)
         {
-            HttpStatusCode.Unauthorized => new UnauthorizedException(content),
-            HttpStatusCode.TooManyRequests => new RateLimitException(content),
-            HttpStatusCode.ServiceUnavailable => new ServiceUnavailableException(content),
-            _ => new DeviantArtApiException(response.StatusCode, content)
-        };
+            case HttpStatusCode.Unauthorized:
+                throw new UnauthorizedException(content);
+            case HttpStatusCode.TooManyRequests:
+                throw new RateLimitException(content);
+            case HttpStatusCode.ServiceUnavailable:
+                throw new ServiceUnavailableException(content);
+            case HttpStatusCode.Forbidden:
+            {
+                var errorResponse = JsonSerializer.Deserialize<ErrorResponse>(content);
+                if (errorResponse?.ErrorType == CustomExceptionCode.InsufficientScope)
+                {
+                    throw new InsufficientScopeException(errorResponse);
+                }
+
+                throw new DeviantArtApiException(response.StatusCode, content);
+            }
+            default:
+                throw new DeviantArtApiException(response.StatusCode, content);
+        }
     }
 }

@@ -25,6 +25,13 @@ public class DeviantArtApiException : Exception
         }
 
     }
+
+    protected DeviantArtApiException(HttpStatusCode statusCode, ErrorResponse errorResponse)
+        : base($"API request failed with status code {statusCode}: {errorResponse.ErrorDescription}")
+    {
+        StatusCode = statusCode;
+        ErrorResponse = errorResponse;
+    }
 }
 
 public class UnauthorizedException(string? responseContent)
@@ -41,3 +48,14 @@ public class ServiceUnavailableException(string responseContent)
     
 public class InvalidClientException(string responseContent)
     : DeviantArtApiException(HttpStatusCode.BadRequest, responseContent);
+    
+public class InsufficientScopeException : DeviantArtApiException
+{
+    public InsufficientScopeException(string responseContent) : base(HttpStatusCode.Forbidden, responseContent)
+    {
+    }
+    
+    public InsufficientScopeException(ErrorResponse errorResponse) : base(HttpStatusCode.Forbidden, errorResponse)
+    {
+    }
+}
