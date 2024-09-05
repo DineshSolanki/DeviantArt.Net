@@ -10,7 +10,7 @@ public static class Util
         {
             GrantType.AuthorizationCode => new Client(Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_ID")!,
                 Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_SECRET")!, TokenStore, "http://localhost:8451/",
-                Scope.Browse, Scope.Stash, Scope.Publish),
+                Scope.Browse, Scope.Stash, Scope.Publish, Scope.Message),
             GrantType.ClientCredentials => new Client(Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_ID")!,
                 Environment.GetEnvironmentVariable("DEVIANT_ART_CLIENT_SECRET")!, TokenStore),
             GrantType.Implicit => throw new NotImplementedException(),
