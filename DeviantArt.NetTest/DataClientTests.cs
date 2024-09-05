@@ -1,15 +1,13 @@
 ﻿namespace DeviantArt.NetTest;
 
 [TestClass]
-public class DataClientTests
+public class DataClientTests : Testbase
 {
-    private readonly Client _client = Util.GetClientByGrantType(GrantType.ClientCredentials);
-    
     
     [TestMethod]
     public async Task GetDataCountriesAsync_ShouldReturnCountriesResponse()
     {
-        var result = await _client.GetDataCountriesAsync();
+        var result = await Client.GetDataCountriesAsync();
         
         Assert.IsTrue(result.Results.Count >= 243);
     }
@@ -17,7 +15,7 @@ public class DataClientTests
     [TestMethod]
     public async Task GetDataPrivacyPolicyAsync_ShouldReturnPrivacyResponse()
     {
-        var result = await _client.GetDataPrivacyPolicyAsync();
+        var result = await Client.GetDataPrivacyPolicyAsync();
         
         Assert.IsNotNull(result.Text);
     }
@@ -25,7 +23,7 @@ public class DataClientTests
     [TestMethod]
     public async Task GetDataSubmissionPolicyAsync_ShouldReturnSubmissionResponse()
     {
-        var result = await _client.GetDataSubmissionPolicyAsync();
+        var result = await Client.GetDataSubmissionPolicyAsync();
         
         Assert.IsNotNull(result.Text);
     }
@@ -33,7 +31,7 @@ public class DataClientTests
     [TestMethod]
     public async Task GetDataTermsOfServiceAsync_ShouldReturnTermsOfServiceResponse()
     {
-        var result = await _client.GetDataTermsOfServiceAsync();
+        var result = await Client.GetDataTermsOfServiceAsync();
         
         Assert.IsNotNull(result.Text);
     }

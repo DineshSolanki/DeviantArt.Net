@@ -1,15 +1,14 @@
 ﻿namespace DeviantArt.NetTest;
 
 [TestClass]
-public class BrowseTests
+public class BrowseTests : Testbase
 {
-    private readonly Client _client = Util.GetClientByGrantType(GrantType.ClientCredentials);
-
+    
     [TestMethod]
     public async Task GetDailyDeviationsAsync_ShouldReturnDeviantArtApiResponse()
     {
         var date = new DateOnly(2021, 10, 10);
-        var result = await _client.GetDailyDeviationsAsync(date);
+        var result = await Client.GetDailyDeviationsAsync(date);
             
         Assert.IsNotNull(result);
     }
@@ -21,7 +20,7 @@ public class BrowseTests
         const int limit = 10;
         const int offset = 0;
             
-        var result = await _client.GetDeviantsYouWatchAsync(offset, limit);
+        var result = await Client.GetDeviantsYouWatchAsync(offset, limit);
             
         Assert.IsFalse(result.Results.Count > 10);
     }
@@ -34,7 +33,7 @@ public class BrowseTests
         const int offset = 0;
         const bool matureContent = false;
             
-        var result = await _client.BrowseHomeDeviationsAsync();
+        var result = await Client.BrowseHomeDeviationsAsync();
             
         Assert.IsFalse(result.Results.Count > 10);
     }
@@ -45,7 +44,7 @@ public class BrowseTests
             
         var deviationId = Ids.PoolByAllRich;
             
-        var result = await _client.GetMoreLikeThisPreviewAsync(deviationId);
+        var result = await Client.GetMoreLikeThisPreviewAsync(deviationId);
             
         Assert.IsNotNull(result.Author);
     }
@@ -56,7 +55,7 @@ public class BrowseTests
         
         var expectedResponse = Util.LoadJsonFromFile<BrowseResponse>("ExpectedResponses/Browse/BrowseTags.json");
             
-        var result = await _client.BrowseTagsAsync(Ids.tagName);
+        var result = await Client.BrowseTagsAsync(Ids.tagName);
             
         Assert.AreEqual(expectedResponse.Results.Count, result.Results.Count);
     }
@@ -67,7 +66,7 @@ public class BrowseTests
         
         var expectedResponse = Util.LoadJsonFromFile<TagNamesResponse>("ExpectedResponses/Browse/ArtTagNamesResponse.json");
             
-        var result = await _client.BrowseTagsSearchAsync(Ids.tagName);
+        var result = await Client.BrowseTagsSearchAsync(Ids.tagName);
             
         Assert.AreEqual(expectedResponse.Results.Count, result.Results.Count);
     }
@@ -78,7 +77,7 @@ public class BrowseTests
         
         var expectedResponse = Util.LoadJsonFromFile<BrowseResponse>("ExpectedResponses/Browse/ArtTopicBrowseResponse.json");
             
-        var result = await _client.BrowseTopicAsync(Ids.tagName);
+        var result = await Client.BrowseTopicAsync(Ids.tagName);
             
         Assert.AreEqual(expectedResponse.Results.Count, result.Results.Count);
     }
@@ -87,7 +86,7 @@ public class BrowseTests
     public async Task BrowseTopicsAsync_ShouldReturnTopicsResponse()
     {
         
-        var result = await _client.BrowseTopicsAsync();
+        var result = await Client.BrowseTopicsAsync();
             
         Assert.IsNotNull( result.Results);
     }
@@ -96,7 +95,7 @@ public class BrowseTests
     public async Task BrowseTopTopicsAsync_ShouldReturnTopicsResponse()
     {
         
-        var result = await _client.BrowseTopTopicsAsync();
+        var result = await Client.BrowseTopTopicsAsync();
             
         Assert.IsNotNull( result.Results);
     }

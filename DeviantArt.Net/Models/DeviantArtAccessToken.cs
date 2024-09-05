@@ -15,7 +15,7 @@ public class DeviantArtAccessToken : ErrorResponse
     public string RefreshToken { get; set; }
     
     [JsonPropertyName("scope")]
-    public Scope Scope { get; set; }
+    public string Scope { get; set; }
     
     [JsonIgnore]
     public GrantType GrantType { get; set; }

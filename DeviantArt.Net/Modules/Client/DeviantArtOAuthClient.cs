@@ -12,17 +12,18 @@ internal class DeviantArtOAuthClient
     private readonly TokenManager _tokenManager;
     private readonly GrantType _grantType;
     private readonly string? _redirectUri;
-    private readonly Scope _scope;
+    private readonly Scope[] _scope;
     private string? _authorizationCode;
     private const string ResponseString = "<html><body><h1>Authorization Successful</h1><p>You can close this window now.</p></body></html>";
     public DeviantArtOAuthClient(string clientId, string clientSecret, ITokenStore tokenStore)
-        :this(clientId, clientSecret, tokenStore, null, Scope.Basic, GrantType.ClientCredentials)
+        :this(clientId, clientSecret, tokenStore, null, GrantType.ClientCredentials, Scope.Basic)
     {
         
     }
     
     private DeviantArtOAuthClient(string clientId, string clientSecret, ITokenStore tokenStore, string? redirectUri,
-        Scope scope, GrantType grantType)
+        GrantType grantType,
+        params Scope[] scope)
     {
         _clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
         _clientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
@@ -32,7 +33,7 @@ internal class DeviantArtOAuthClient
         _scope = scope;
     }
     public DeviantArtOAuthClient(string clientId, string clientSecret, ITokenStore tokenStore, string redirectUri,
-        Scope scope = Scope.Basic): this(clientId, clientSecret, tokenStore, redirectUri, scope, GrantType.AuthorizationCode)
+        params Scope[] scope): this(clientId, clientSecret, tokenStore, redirectUri, GrantType.AuthorizationCode, scope)
     {
         
     }
@@ -60,7 +61,7 @@ internal class DeviantArtOAuthClient
     
     internal async Task<DeviantArtAccessToken> GetAuthorizationCodeAsync()
     {
-        var url = GetAuthorizationUrl(_scope.GetDescription());
+        var url = GetAuthorizationUrl(string.Join(" ", _scope.Select(s => s.GetDescription())));
         Process.Start(new ProcessStartInfo
         {
             FileName = url,

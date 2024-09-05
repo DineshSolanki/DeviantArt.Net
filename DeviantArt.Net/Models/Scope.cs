@@ -6,5 +6,21 @@ public enum Scope
     Basic,
     
     [Description("browse")] [EnumMember(Value = "browse")]
-    Browse
+    Browse,
+    
+    [Description("user")] [EnumMember(Value = "user")]
+    User,
+    
+    [Description("stash")] [EnumMember(Value = "stash")]
+    Stash,
+    
+    [Description("publish")] [EnumMember(Value = "publish")]
+    Publish
+    
+    /*UserManage,
+    Feed,
+    Collection,
+    CommentPost,
+    Message,
+    Note,*/
 }

@@ -13,7 +13,8 @@ public partial class Client
     {
     }
     
-    public Client(string clientId, string clientSecret, ITokenStore tokenStore, string redirectUri, Scope scope)
+    public Client(string clientId, string clientSecret, ITokenStore tokenStore, string redirectUri,
+        params Scope[] scope)
         : this(new DeviantArtOAuthClient(clientId, clientSecret, tokenStore, redirectUri, scope))
     {
     }
