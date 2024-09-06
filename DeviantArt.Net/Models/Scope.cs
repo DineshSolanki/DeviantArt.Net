@@ -15,12 +15,14 @@ public enum Scope
     Stash,
     
     [Description("publish")] [EnumMember(Value = "publish")]
-    Publish
+    Publish,
+    
+    [Description("message")] [EnumMember(Value = "message")]
+    Message,
     
     /*UserManage,
     Feed,
     Collection,
     CommentPost,
-    Message,
     Note,*/
 }
