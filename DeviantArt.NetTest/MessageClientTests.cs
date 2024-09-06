@@ -1,4 +1,5 @@
 ﻿using DeviantArt.Net.Exceptions;
+using DeviantArt.Net.Models.Message;
 
 namespace DeviantArt.NetTest;
 
@@ -10,19 +11,87 @@ public class MessageClientTests : Testbase
     {
         try
         {
-            var response = await Client.DeleteMessageAsync(folderId:"e5ed1544-6702-3085-877b-b63c6aa61c66");
+            var response = await Client.DeleteMessageAsync(folderId:Ids.FolderId);
             Console.WriteLine(response);
         }
         catch (DeviantArtApiException e)
         {
             Console.WriteLine(e.ErrorResponse);
-            throw;
+            Assert.IsTrue(e.ErrorResponse?.ErrorType == "invalid_request");
         }
     }
 
     [TestMethod]
     public async Task GetFeedAsyncTest()
     {
-        var response = await Client.GetFeedAsync(folderId: "e5ed1544-6702-3085-877b-b63c6aa61c66");
+        try
+        {
+            var response = await Client.GetFeedAsync(folderId: Ids.FolderId);
+        }
+        catch (DeviantArtApiException e)
+        {
+            Console.WriteLine(e.ErrorResponse);
+            Assert.IsTrue(e.ErrorResponse?.ErrorType == "invalid_request");
+        }
+    }
+    
+    [TestMethod]
+    public async Task GetFeedbackAsyncTest()
+    {
+        try
+        {
+            var response = await Client.GetFeedbackAsync(FeedbackMessageType.Activity, folderId: Ids.FolderId);
+            Console.WriteLine(response);
+        }
+        catch (DeviantArtApiException e)
+        {
+            Console.WriteLine(e.ErrorResponse);
+            Assert.IsTrue(e.ErrorResponse?.ErrorType == "invalid_request");
+        }
+    }
+    
+    [TestMethod]
+    public async Task GetFeedbackStackAsyncTest()
+    {
+        try
+        {
+            var response = await Client.GetFeedbackStackAsync(Ids.FolderId);
+            Console.WriteLine(response);
+        }
+        catch (DeviantArtApiException e)
+        {
+            Console.WriteLine(e.ErrorResponse);
+            Assert.IsTrue(e.ErrorResponse?.ErrorType == "invalid_request");
+        }
+    }
+    
+    [TestMethod]
+    public async Task GetMentionsAsyncTest()
+    {
+        try
+        {
+            var response = await Client.GetMentionsAsync(folderId: Ids.FolderId);
+            Console.WriteLine(response);
+        }
+        catch (DeviantArtApiException e)
+        {
+            Console.WriteLine(e.ErrorResponse);
+            Assert.IsTrue(e.ErrorResponse?.ErrorType == "invalid_request");
+        }
+    }
+    
+    [TestMethod]
+    public async Task GetMentionsStackAsyncTest()
+    {
+        try
+        {
+            var response = await Client.GetMentionsStackAsync(Ids.FolderId);
+            Console.WriteLine(response);
+        }
+        catch (DeviantArtApiException e)
+        {
+            Console.WriteLine(e.ErrorResponse);
+            Assert.IsTrue(e.ErrorResponse?.ErrorType == "invalid_request");
+        }
     }
 }
