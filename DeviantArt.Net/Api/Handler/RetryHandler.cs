@@ -65,7 +65,7 @@ internal class RetryHandler(HttpMessageHandler innerHandler) : DelegatingHandler
             case HttpStatusCode.Forbidden:
             {
                 var errorResponse = JsonSerializer.Deserialize<ErrorResponse>(content);
-                if (errorResponse?.ErrorType == CustomExceptionCode.InsufficientScope)
+                if (errorResponse?.ErrorType == CustomErrorType.InsufficientScope)
                 {
                     throw new InsufficientScopeException(errorResponse);
                 }
