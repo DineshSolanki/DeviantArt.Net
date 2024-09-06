@@ -55,7 +55,7 @@ public class BrowseTests : Testbase
         
         var expectedResponse = Util.LoadJsonFromFile<BrowseResponse>("ExpectedResponses/Browse/BrowseTags.json");
             
-        var result = await Client.BrowseTagsAsync(Ids.tagName);
+        var result = await Client.BrowseTagsAsync(Ids.TagName);
             
         Assert.AreEqual(expectedResponse.Results.Count, result.Results.Count);
     }
@@ -66,7 +66,7 @@ public class BrowseTests : Testbase
         
         var expectedResponse = Util.LoadJsonFromFile<TagNamesResponse>("ExpectedResponses/Browse/ArtTagNamesResponse.json");
             
-        var result = await Client.BrowseTagsSearchAsync(Ids.tagName);
+        var result = await Client.BrowseTagsSearchAsync(Ids.TagName);
             
         Assert.AreEqual(expectedResponse.Results.Count, result.Results.Count);
     }
@@ -77,7 +77,7 @@ public class BrowseTests : Testbase
         
         var expectedResponse = Util.LoadJsonFromFile<BrowseResponse>("ExpectedResponses/Browse/ArtTopicBrowseResponse.json");
             
-        var result = await Client.BrowseTopicAsync(Ids.tagName);
+        var result = await Client.BrowseTopicAsync(Ids.TagName);
             
         Assert.AreEqual(expectedResponse.Results.Count, result.Results.Count);
     }

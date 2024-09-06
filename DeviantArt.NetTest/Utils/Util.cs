@@ -2,7 +2,7 @@
 
 public static class Util
 {
-    private static readonly ITokenStore TokenStore = new InMemoryTokenStore();
+    private static readonly ITokenStore TokenStore = new JsonTokenStore();
     
     public static Client GetClientByGrantType(GrantType grantType)
     {
