@@ -1,20 +1,31 @@
 ﻿using System.Reflection;
+using DeviantArt.Net.Models.User;
 
 namespace DeviantArt.Net.Modules;
 
-public static class Extensions
+internal static class Extensions
 {
-    public static string GetDescription<T>(this T enumerationValue) where T : struct
+    internal static string GetDescription<T>(this T enumerationValue) where T : struct
     {
-        var attribute =
-            enumerationValue.GetType()
-                    .GetTypeInfo()
-                    .GetMember(enumerationValue.ToString()!)
-                    .FirstOrDefault(member => member.MemberType == MemberTypes.Field)
-                    ?.GetCustomAttributes(typeof(DescriptionAttribute), false)
-                    .SingleOrDefault()
-                as DescriptionAttribute;
+        var type = enumerationValue.GetType();
+        var memberInfo = type.GetTypeInfo().GetMember(enumerationValue.ToString()!).FirstOrDefault(member => member.MemberType == MemberTypes.Field);
 
-        return (attribute?.Description ?? enumerationValue.ToString())!;
+        if (memberInfo?.GetCustomAttributes(typeof(DescriptionAttribute), false).SingleOrDefault() is DescriptionAttribute descriptionAttribute)
+        {
+            return descriptionAttribute.Description;
+        }
+
+        return memberInfo?.GetCustomAttributes(typeof(EnumMemberAttribute), false)
+            .SingleOrDefault() is EnumMemberAttribute enumMemberAttribute 
+            ? enumMemberAttribute.Value : enumerationValue.ToString()!;
+    }
+
+    internal static void AddIfNotNull<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue? value)
+        where TValue : class
+    {
+        if (value != null)
+        {
+            dictionary[key] = value;
+        }
     }
 }
