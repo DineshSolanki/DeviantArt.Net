@@ -7,7 +7,19 @@ It provides a simple and easy-to-use interface for accessing various endpoints o
 
 - OAuth2 authentication
 - Token management
-- All endpoints of the DeviantArt API (WIP)
+- Supported Endpoints
+    - [x] Browse
+    - [ ] Collections
+    - [ ] Comments
+    - [x] Data
+    - [ ] Deviation
+    - [ ] Feed
+    - [ ] Gallery
+    - [x] Messages
+    - [ ] Notes
+    - [ ] Stash
+    - [x] User
+    - [x] Util
 
 ## Installation
 
