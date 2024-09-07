@@ -5,19 +5,25 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>0.1.0</Version>
+        <Version>0.1.1</Version>
         <Title>DeviantArt.Net</Title>
         <Authors>Dinesh Solanki</Authors>
         <Description>DeviantArt.Net is a .NET client library for interacting with the DeviantArt API. It provides a simple and easy-to-use interface for accessing various endpoints of the DeviantArt API. </Description>
         <Copyright>2024</Copyright>
         <PackageProjectUrl>https://github.com/DineshSolanki/DeviantArt.Net</PackageProjectUrl>
-        <PackageLicenseUrl>https://raw.githubusercontent.com/DineshSolanki/DeviantArt.Net/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/DineshSolanki/DeviantArt.Net</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>api-client deviantart deviantart-api deviant-art deviantart-downloader </PackageTags>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
-
+    <PropertyGroup>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="../README.md" Pack="true" PackagePath="\"/>
+        <None Include="../LICENSE" Pack="true" PackagePath=""/>
+    </ItemGroup>
+    
     <ItemGroup>
       <PackageReference Include="Refit" Version="7.1.2" />
     </ItemGroup>
