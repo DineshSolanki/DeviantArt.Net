@@ -2,7 +2,7 @@
 using System.Reflection;
 
 namespace DeviantArt.Net.Modules.Util;
-public static class FieldSelector
+internal static class FieldSelector
 {
     public static string GetFieldForKey<TSource>(Expression<Func<TSource, object?>> keySelector)
     {

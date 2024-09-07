@@ -32,7 +32,7 @@ internal class DeviantArtOAuthClient
         _redirectUri = redirectUri;
         _scope = scope;
     }
-    public DeviantArtOAuthClient(string clientId, string clientSecret, ITokenStore tokenStore, string redirectUri,
+    internal DeviantArtOAuthClient(string clientId, string clientSecret, ITokenStore tokenStore, string redirectUri,
         params Scope[] scope): this(clientId, clientSecret, tokenStore, redirectUri, GrantType.AuthorizationCode, scope)
     {
         
@@ -166,7 +166,7 @@ internal class DeviantArtOAuthClient
         return await _tokenManager.AcquireTokenAsync(_grantType, _scope);
     }
 
-    public Task<DeviantArtAccessToken> GetImplicitTokenAsync()
+    internal Task<DeviantArtAccessToken> GetImplicitTokenAsync()
     {
         throw new NotImplementedException("Implicit grant type is not supported.");
     }

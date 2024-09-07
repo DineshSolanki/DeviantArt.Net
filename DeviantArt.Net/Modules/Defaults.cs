@@ -2,5 +2,5 @@
 
 internal static class Defaults
 {
-    public const string BaseAddress = "https://www.deviantart.com";
+    internal const string BaseAddress = "https://www.deviantart.com";
 }

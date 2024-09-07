@@ -2,7 +2,7 @@
 
 namespace DeviantArt.Net.Modules.Util.Formatters;
 
-public class CustomDateUrlParameterFormatter : DefaultUrlParameterFormatter
+internal class CustomDateUrlParameterFormatter : DefaultUrlParameterFormatter
 {
     public override string? Format(object? value, ICustomAttributeProvider attributeProvider, Type type)
     {

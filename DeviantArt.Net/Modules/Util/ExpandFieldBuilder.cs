@@ -2,7 +2,7 @@
 
 namespace DeviantArt.Net.Modules.Util;
 
-public static class ExpandFieldBuilder
+internal static class ExpandFieldBuilder
 {
     public static LambdaExpression[] Build(params LambdaExpression[] expressions)
     {
