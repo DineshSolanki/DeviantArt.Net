@@ -163,7 +163,7 @@ internal class DeviantArtOAuthClient
 
     internal async Task<DeviantArtAccessToken> AcquireTokenAsync()
     {
-        return await _tokenManager.AcquireTokenAsync(_grantType);
+        return await _tokenManager.AcquireTokenAsync(_grantType, _scope);
     }
 
     public Task<DeviantArtAccessToken> GetImplicitTokenAsync()

@@ -3,10 +3,11 @@
 internal class TokenManager(ITokenStore tokenStore, DeviantArtOAuthClient oauthClient)
 {
     
-    internal async Task<DeviantArtAccessToken> AcquireTokenAsync(GrantType grantType)
+    internal async Task<DeviantArtAccessToken> AcquireTokenAsync(GrantType grantType, Scope[] scopes)
     {
         var currentToken = await tokenStore.GetTokenAsync();
-        if (currentToken is null)
+        var currentScopes = currentToken?.Scope.Split(' ').Select(s => s.Trim()).ToList();
+        if (currentToken is null || !scopes.All(scope => currentScopes.Contains(scope.GetDescription())))
         {
             return await GenerateTokenAsync(grantType);
         }
