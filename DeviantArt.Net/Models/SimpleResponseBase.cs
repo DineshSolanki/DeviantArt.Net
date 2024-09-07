@@ -1,6 +1,6 @@
 ﻿namespace DeviantArt.Net.Models;
 
-public class MessageResponseBase
+public class SimpleResponseBase
 {
     [JsonPropertyName("error_description")]
     public string? ErrorDescription { get; init; }

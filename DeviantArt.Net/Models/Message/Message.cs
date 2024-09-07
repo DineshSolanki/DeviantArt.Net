@@ -24,7 +24,7 @@ public class Message
     public bool IsNew { get; set; }
 
     [JsonPropertyName("originator")]
-    public User Originator { get; set; }
+    public User.User Originator { get; set; }
 
     [JsonPropertyName("subject")]
     public Subject Subject { get; set; }
@@ -33,7 +33,7 @@ public class Message
     public string Html { get; set; }
 
     [JsonPropertyName("profile")]
-    public User Profile { get; set; }
+    public User.User Profile { get; set; }
 
     [JsonPropertyName("deviation")]
     public Deviation Deviation { get; set; }
@@ -51,7 +51,7 @@ public class Message
 public class Subject
 {
     [JsonPropertyName("profile")]
-    public User Profile { get; set; }
+    public User.User Profile { get; set; }
 
     [JsonPropertyName("deviation")]
     public Deviation Deviation { get; set; }
@@ -94,7 +94,7 @@ public class Status
     public bool IsDeleted { get; set; }
 
     [JsonPropertyName("author")]
-    public User Author { get; set; }
+    public User.User Author { get; set; }
 
     [JsonPropertyName("items")]
     public List<Item> Items { get; set; }
@@ -145,7 +145,7 @@ public class Comment
     public int Likes { get; set; }
 
     [JsonPropertyName("user")]
-    public User User { get; set; }
+    public User.User User { get; set; }
 
     [JsonPropertyName("text_content")]
     public EditorText TextContent { get; set; }
