@@ -51,6 +51,8 @@ public class InvalidClientException(string responseContent)
     
 public class InsufficientScopeException : DeviantArtApiException
 {
+    
+    public string RequiredScope => ErrorResponse?.AdditionalData["scope"].ToString() ?? string.Empty;
     public InsufficientScopeException(string responseContent) : base(HttpStatusCode.Forbidden, responseContent)
     {
     }

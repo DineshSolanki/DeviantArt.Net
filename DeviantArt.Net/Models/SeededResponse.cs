@@ -7,7 +7,7 @@ public class SeededResponse
     public Guid Seed { get; set; }
 
     [JsonPropertyName("author")]
-    public User Author { get; set; }
+    public User.User Author { get; set; }
 
     [JsonPropertyName("more_from_artist")]
     public List<Deviation> MoreFromArtist { get; set; }
@@ -37,5 +37,5 @@ public class Collection
     public string Name { get; set; }
 
     [JsonPropertyName("owner")]
-    public User Owner { get; set; }
+    public User.User Owner { get; set; }
 }

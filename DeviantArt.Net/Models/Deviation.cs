@@ -27,10 +27,10 @@ public class Deviation
     public bool IsBlocked { get; set; }
 
     [JsonPropertyName("author")]
-    public User Author { get; set; }
+    public User.User Author { get; set; }
 
     [JsonPropertyName("stats")]
-    public Stats Stats { get; set; }
+    public DeviationStats DeviationStats { get; set; }
 
     [JsonPropertyName("published_time")]
     public string PublishedTime { get; set; }
@@ -93,108 +93,6 @@ public class Deviation
     public MotionBook MotionBook { get; set; }
 }
 
-public class User
-{
-    [JsonPropertyName("userid")]
-    public string UserId { get; set; }
-
-    [JsonPropertyName("username")]
-    public string Username { get; set; }
-
-    [JsonPropertyName("usericon")]
-    public string UserIcon { get; set; }
-
-    [JsonPropertyName("type")]
-    public string Type { get; set; }
-
-    [JsonPropertyName("is_watching")]
-    public bool? IsWatching { get; set; }
-
-    [JsonPropertyName("is_subscribed")]
-    public bool? IsSubscribed { get; set; }
-
-    [JsonPropertyName("details")]
-    public UserDetails Details { get; set; }
-
-    [JsonPropertyName("geo")]
-    public UserGeo Geo { get; set; }
-
-    [JsonPropertyName("profile")]
-    public UserProfile Profile { get; set; }
-
-    [JsonPropertyName("stats")]
-    public UserStats Stats { get; set; }
-
-    [JsonPropertyName("sidebar")]
-    public UserSidebar Sidebar { get; set; }
-
-    [JsonPropertyName("session")]
-    public ApiSession Session { get; set; }
-}
-
-public class UserDetails
-{
-    [JsonPropertyName("sex")]
-    public string Sex { get; set; }
-
-    [JsonPropertyName("age")]
-    public int? Age { get; set; }
-
-    [JsonPropertyName("joindate")]
-    public string JoinDate { get; set; }
-}
-
-public class UserGeo
-{
-    [JsonPropertyName("country")]
-    public string Country { get; set; }
-
-    [JsonPropertyName("countryid")]
-    public int CountryId { get; set; }
-
-    [JsonPropertyName("timezone")]
-    public string Timezone { get; set; }
-}
-
-public class UserProfile
-{
-    [JsonPropertyName("user_is_artist")]
-    public bool UserIsArtist { get; set; }
-
-    [JsonPropertyName("artist_level")]
-    public string ArtistLevel { get; set; }
-
-    [JsonPropertyName("artist_speciality")]
-    public string ArtistSpeciality { get; set; }
-
-    [JsonPropertyName("real_name")]
-    public string RealName { get; set; }
-
-    [JsonPropertyName("tagline")]
-    public string Tagline { get; set; }
-
-    [JsonPropertyName("website")]
-    public string Website { get; set; }
-
-    [JsonPropertyName("cover_photo")]
-    public string CoverPhoto { get; set; }
-}
-
-public class UserStats
-{
-    [JsonPropertyName("watchers")]
-    public int Watchers { get; set; }
-
-    [JsonPropertyName("friends")]
-    public int Friends { get; set; }
-}
-
-public class UserSidebar
-{
-    [JsonPropertyName("watched")]
-    public Watched Watched { get; set; }
-}
-
 public class Watched
 {
     [JsonPropertyName("has_new_content")]
@@ -246,7 +144,7 @@ public class ApiSessionCounts
     public int Notes { get; set; }
 }
 
-public class Stats
+public class DeviationStats
 {
     [JsonPropertyName("comments")]
     public int Comments { get; set; }
@@ -431,10 +329,10 @@ public class DailyDeviation
     public string Time { get; set; }
 
     [JsonPropertyName("giver")]
-    public User Giver { get; set; }
+    public User.User Giver { get; set; }
 
     [JsonPropertyName("suggester")]
-    public User Suggester { get; set; }
+    public User.User Suggester { get; set; }
 }
 
 public class MotionBook

@@ -10,8 +10,8 @@ public partial class Client
     /// <param name="messageId">The ID of the message to delete.</param>
     /// <param name="stackId">The ID of the message stack to delete.</param>
     /// <param name="folderId">The ID of the folder containing the message or stack to delete.</param>
-    /// <returns>A task that represents the asynchronous operation. The task result contains a <see cref="MessageResponseBase"/>.</returns>
-    public async Task<MessageResponseBase> DeleteMessageAsync(string? messageId = null, string? stackId = null, string? folderId = null)
+    /// <returns>A task that represents the asynchronous operation. The task result contains a <see cref="SimpleResponseBase"/>.</returns>
+    public async Task<SimpleResponseBase> DeleteMessageAsync(string? messageId = null, string? stackId = null, string? folderId = null)
     {
         var request = new MessageRequest
         {
