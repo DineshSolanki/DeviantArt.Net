@@ -13,10 +13,10 @@ It provides a simple and easy-to-use interface for accessing various endpoints o
     - [ ] Comments
     - [x] Data
     - [ ] Deviation
-    - [ ] Feed
+    - [ ] Feed  - Deprecated by DeviantArt and scheduled for removal
     - [ ] Gallery
     - [x] Messages
-    - [ ] Notes
+    - [ ] Notes - Deprecated by DeviantArt and scheduled for removal
     - [ ] Stash
     - [x] User
     - [x] Util
