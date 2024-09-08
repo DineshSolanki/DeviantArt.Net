@@ -1,4 +1,6 @@
-﻿namespace DeviantArt.Net.Models.Message;
+﻿using DeviantArt.Net.Modules.Util.Formatters;
+
+namespace DeviantArt.Net.Models.Message;
 
 public class Message
 {
@@ -123,8 +125,8 @@ public class Comment
     [JsonPropertyName("parentid")]
     public Guid? ParentId { get; set; }
 
-    [JsonPropertyName("posted")]
-    public string Posted { get; set; }
+    [JsonPropertyName("posted")] [JsonConverter(typeof(DateTimeOffsetNullableConverter<DateTimeOffset>))]
+    public DateTimeOffset Posted { get; set; }
 
     [JsonPropertyName("replies")]
     public int Replies { get; set; }

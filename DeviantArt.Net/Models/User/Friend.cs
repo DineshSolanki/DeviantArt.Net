@@ -23,8 +23,8 @@ public class Watcher
     /// <summary>
     /// Last visit time
     /// </summary>
-    [JsonPropertyName("lastvisit")] [JsonConverter(typeof(DateTimeNullableConverter))]
-    public DateTime? LastVisit { get; set; }
+    [JsonPropertyName("lastvisit")] [JsonConverter(typeof(DateTimeOffsetNullableConverter<DateTimeOffset>))]
+    public DateTimeOffset? LastVisit { get; set; }
 
     /// <summary>
     /// Object describing what items are being watched

@@ -10,7 +10,7 @@ It provides a simple and easy-to-use interface for accessing various endpoints o
 - Supported Endpoints
     - [x] Browse
     - [ ] Collections
-    - [ ] Comments
+    - [x] Comments
     - [x] Data
     - [ ] Deviation
     - [ ] Feed  - Deprecated by DeviantArt and scheduled for removal

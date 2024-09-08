@@ -23,9 +23,11 @@ public enum Scope
     [Description("user.manage")] [EnumMember(Value = "user.manage")]
     UserManage,
     
+    [Description("comment.post")] [EnumMember(Value = "comment.post")]
+    CommentPost,
     /*
     Feed,
     Collection,
-    CommentPost,
+    ,
     Note,*/
 }
