@@ -12,11 +12,11 @@ It provides a simple and easy-to-use interface for accessing various endpoints o
     - [ ] Collections
     - [x] Comments
     - [x] Data
-    - [ ] Deviation
-    - [ ] Feed  - Deprecated by DeviantArt and scheduled for removal
+    - [x] Deviation
+    - [ ] ~~Feed  - Deprecated by DeviantArt and scheduled for removal~~
     - [ ] Gallery
     - [x] Messages
-    - [ ] Notes - Deprecated by DeviantArt and scheduled for removal
+    - [ ] ~~Notes - Deprecated by DeviantArt and scheduled for removal~~
     - [ ] Stash
     - [x] User
     - [x] Util
