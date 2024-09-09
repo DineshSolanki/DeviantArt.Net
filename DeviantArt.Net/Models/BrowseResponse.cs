@@ -1,6 +1,8 @@
-﻿namespace DeviantArt.Net.Models;
+﻿using DeviantArt.Net.Models.Deviation;
 
-public class BrowseResponse : PaginatedBase<Deviation>
+namespace DeviantArt.Net.Models;
+
+public class BrowseResponse : PaginatedBase<Deviation.Deviation>
 {
     [JsonPropertyName("session")]
     public ApiSession Session { get; set; }

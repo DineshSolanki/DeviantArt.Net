@@ -1,4 +1,5 @@
-﻿using DeviantArt.Net.Modules.Util.Formatters;
+﻿using DeviantArt.Net.Models.Deviation;
+using DeviantArt.Net.Modules.Util.Formatters;
 
 namespace DeviantArt.Net.Models.Message;
 
@@ -38,7 +39,7 @@ public class Message
     public User.User Profile { get; set; }
 
     [JsonPropertyName("deviation")]
-    public Deviation Deviation { get; set; }
+    public Deviation.Deviation Deviation { get; set; }
 
     [JsonPropertyName("status")]
     public Status Status { get; set; }
@@ -56,7 +57,7 @@ public class Subject
     public User.User Profile { get; set; }
 
     [JsonPropertyName("deviation")]
-    public Deviation Deviation { get; set; }
+    public Deviation.Deviation Deviation { get; set; }
 
     [JsonPropertyName("status")]
     public Status Status { get; set; }
@@ -114,7 +115,7 @@ public class Item
     public Status Status { get; set; }
 
     [JsonPropertyName("deviation")]
-    public Deviation Deviation { get; set; }
+    public Deviation.Deviation Deviation { get; set; }
 }
 
 public class Comment

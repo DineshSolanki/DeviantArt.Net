@@ -28,4 +28,18 @@ internal static class Extensions
             dictionary[key] = value;
         }
     }
+    
+    internal static void AddEnumArray<TEnum>(this Dictionary<string, object> dictionary, string keyPrefix, IEnumerable<TEnum>? enumArray) where TEnum : struct, Enum
+    {
+        enumArray?.Select((enumValue, index) => new { enumValue, index })
+            .ToList()
+            .ForEach(e => dictionary.Add($"{keyPrefix}[{e.index}]", e.enumValue.GetDescription()));
+    }
+    
+    internal static void AddEnumerable<T>(this Dictionary<string, object> dictionary, string keyPrefix, IEnumerable<T>? enumerable)
+    {
+        enumerable?.Select((value, index) => new { value, index })
+            .ToList()
+            .ForEach(e => dictionary[$"{keyPrefix}[{e.index}]"] = e.value.ToString());
+    }
 }

@@ -1,4 +1,6 @@
-﻿namespace DeviantArt.Net.Api;
+﻿using DeviantArt.Net.Models.Deviation;
+
+namespace DeviantArt.Net.Api;
 
 internal partial interface IDeviantArtApi
 {
@@ -20,7 +22,7 @@ internal partial interface IDeviantArtApi
         [AliasAs("mature_content")] bool? matureContent = null);
     
     [Get("/api/v1/oauth2/browse/morelikethis/preview")]
-    Task<SeededResponse> GetMoreLikeThisPreviewAsync([AliasAs("seed")] string deviationId,
+    Task<SeededResponse> GetMoreLikeThisPreviewAsync([AliasAs("seed")] Guid deviationId,
         [AliasAs("mature_content")] bool? matureContent = null);
     
     [Get("/api/v1/oauth2/browse/tags")]

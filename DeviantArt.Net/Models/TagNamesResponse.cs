@@ -1,4 +1,6 @@
-﻿namespace DeviantArt.Net.Models;
+﻿using DeviantArt.Net.Models.Deviation;
+
+namespace DeviantArt.Net.Models;
 
 public class TagNamesResponse
 {

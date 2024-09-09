@@ -1,4 +1,6 @@
-﻿namespace DeviantArt.NetTest;
+﻿using DeviantArt.Net.Models.Deviation;
+
+namespace DeviantArt.NetTest;
 
 [TestClass]
 public class ClientTests : Testbase

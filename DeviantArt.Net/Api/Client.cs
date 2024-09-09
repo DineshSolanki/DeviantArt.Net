@@ -40,15 +40,4 @@ public partial class Client
     {
         return _api.CheckTokenValidityAsync();
     }
-
-    public async Task<Deviation> GetDeviationAsync(string deviationId)
-    {
-        return await _api.GetDeviationAsync(deviationId);
-    }
-
-    public async Task<Deviation> GetDeviationAsync(Deviation deviation)
-    {
-        return await GetDeviationAsync(deviation.DeviationId);
-    }
-    
 }
