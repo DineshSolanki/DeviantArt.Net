@@ -1,4 +1,6 @@
-﻿namespace DeviantArt.Net.Models.User;
+﻿using DeviantArt.Net.Models.Deviation;
+
+namespace DeviantArt.Net.Models.User;
 
 public class User
 {
@@ -34,9 +36,6 @@ public class User
 
     [JsonPropertyName("sidebar")]
     public UserSidebar Sidebar { get; set; }
-
-    [JsonPropertyName("session")]
-    public ApiSession Session { get; set; }
 }
 
 public class UserDetails
@@ -100,4 +99,10 @@ public class UserSidebar
 {
     [JsonPropertyName("watched")]
     public Watched Watched { get; set; }
+}
+
+public class WithSession
+{
+    [JsonPropertyName("session")]
+    public ApiSession Session { get; set; }
 }

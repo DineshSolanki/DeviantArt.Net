@@ -16,7 +16,7 @@ public class CommentsTests : Testbase
     [TestMethod]
     public async Task GetDeviationCommentsAsyncTest()
     {
-        var comments = await Client.GetDeviationCommentsAsync(new Guid(Ids.JacksMafiaWweArtDeviationId));
+        var comments = await Client.GetDeviationCommentsAsync(Ids.JacksMafiaWweArtDeviationId);
         Assert.IsNotNull(comments);
         Assert.IsTrue(comments.Thread.Count > 0);
         Assert.IsTrue(comments.Thread.First().Posted == Ids.JacksMafiaWweArtCommentDateOfKingOfDeath);
@@ -25,7 +25,7 @@ public class CommentsTests : Testbase
     [TestMethod]
     public async Task PostCommentOnDeviationTest()
     {
-        var comment = await Client.PostCommentOnDeviation(new Guid(Ids.JacksMafiaWweArtDeviationId), "Test comment");
+        var comment = await Client.PostCommentOnDeviation(Ids.JacksMafiaWweArtDeviationId, "Test comment");
         Assert.IsNotNull(comment);
         Assert.IsTrue(comment.Posted <= DateTime.Now);
     }
@@ -41,7 +41,7 @@ public class CommentsTests : Testbase
     [TestMethod]
     public async Task PostCommentOnStatusTest()
     {
-        var comment = await Client.PostCommentOnStatus(new Guid(Ids.JacksMafiaWweArtDeviationId), "Test comment");
+        var comment = await Client.PostCommentOnStatus(Ids.JacksMafiaWweArtDeviationId, "Test comment");
         Assert.IsNotNull(comment);
         Assert.IsTrue(comment.Posted <= DateTime.Now);
     }
@@ -57,7 +57,7 @@ public class CommentsTests : Testbase
     [TestMethod]
     public async Task GetStatusCommentsAsyncTest()
     {
-        var comments = await Client.GetStatusCommentsAsync(new Guid(Ids.JacksMafiaWweArtDeviationId));
+        var comments = await Client.GetStatusCommentsAsync(Ids.JacksMafiaWweArtDeviationId);
         Assert.IsNotNull(comments);
         Assert.IsTrue(comments.Thread.Count > 0);
     }

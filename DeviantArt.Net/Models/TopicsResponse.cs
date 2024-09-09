@@ -1,4 +1,6 @@
-﻿namespace DeviantArt.Net.Models;
+﻿using DeviantArt.Net.Models.Deviation;
+
+namespace DeviantArt.Net.Models;
 
 public class TopicsResponse : PaginatedBase<TopicResult>
 {
@@ -15,8 +17,8 @@ public class TopicResult
     public string CanonicalName { get; set; }
     
     [JsonPropertyName("example_deviations")]
-    public List<Deviation>? ExampleDeviations { get; set; }
+    public List<Deviation.Deviation>? ExampleDeviations { get; set; }
     
     [JsonPropertyName("deviations")]
-    public List<Deviation?> Deviations { get; set; }
+    public List<Deviation.Deviation?> Deviations { get; set; }
 }

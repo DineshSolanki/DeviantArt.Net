@@ -23,7 +23,7 @@ public class Context
     public User.User? ItemProfile { get; set; }
     
     [JsonPropertyName("item_deviation")]
-    public Deviation? ItemDeviation { get; set; }
+    public Deviation.Deviation? ItemDeviation { get; set; }
     
     [JsonPropertyName("item_status")]
     public Status? ItemStatus { get; set; }

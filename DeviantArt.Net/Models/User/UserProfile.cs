@@ -43,15 +43,12 @@ public class DetailedUserProfile : UserProfile
 
     [JsonPropertyName("galleries")]
     public List<Folder>? Galleries { get; set; }
-
-    [JsonPropertyName("session")]
-    public ApiSession? Session { get; set; }
 }
 
 public class ApiModuleCoverDeviation
 {
     [JsonPropertyName("cover_deviation")]
-    public Deviation? CoverDeviation { get; set; }
+    public Deviation.Deviation? CoverDeviation { get; set; }
     
     [JsonPropertyName("cover_deviationid_offset_y")]
     public int CoverDeviationIdOffsetY { get; set; }

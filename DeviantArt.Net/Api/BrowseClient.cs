@@ -1,4 +1,5 @@
-﻿
+﻿using DeviantArt.Net.Models.Deviation;
+
 namespace DeviantArt.Net.Api;
 
 public partial class Client
@@ -68,7 +69,7 @@ public partial class Client
     /// <param name="deviationId">The ID of the seed deviation.</param>
     /// <param name="matureContent">Indicates whether to include mature content in the results.</param>
     /// <returns>A task that represents the asynchronous operation. The task result contains the preview of similar deviations.</returns>
-    public async Task<SeededResponse> GetMoreLikeThisPreviewAsync(string deviationId, bool? matureContent = null)
+    public async Task<SeededResponse> GetMoreLikeThisPreviewAsync(Guid deviationId, bool? matureContent = null)
     {
         return await _api.GetMoreLikeThisPreviewAsync(deviationId, matureContent);
     }

@@ -10,10 +10,10 @@ public class SeededResponse
     public User.User Author { get; set; }
 
     [JsonPropertyName("more_from_artist")]
-    public List<Deviation> MoreFromArtist { get; set; }
+    public List<Deviation.Deviation> MoreFromArtist { get; set; }
 
     [JsonPropertyName("more_from_da")]
-    public List<Deviation> MoreFromDa { get; set; }
+    public List<Deviation.Deviation> MoreFromDa { get; set; }
 
     [JsonPropertyName("suggested_collections")]
     public List<SuggestedCollection>? SuggestedCollections { get; set; }
@@ -25,7 +25,7 @@ public class SuggestedCollection
     public Collection Collection { get; set; }
 
     [JsonPropertyName("deviations")]
-    public List<Deviation> Deviations { get; set; }
+    public List<Deviation.Deviation> Deviations { get; set; }
 }
 
 public class Collection
