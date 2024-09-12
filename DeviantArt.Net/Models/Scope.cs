@@ -25,9 +25,10 @@ public enum Scope
     
     [Description("comment.post")] [EnumMember(Value = "comment.post")]
     CommentPost,
+    
+    [Description("gallery")] [EnumMember(Value = "gallery")]
+    Gallery,
+    
     /*
-    Feed,
-    Collection,
-    ,
-    Note,*/
+    Collection,*/
 }
