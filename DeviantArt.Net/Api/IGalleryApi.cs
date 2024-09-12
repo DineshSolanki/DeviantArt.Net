@@ -9,7 +9,7 @@ internal partial interface IDeviantArtApi
     Task<PaginatedBase<GalleryFolder>> GetGalleryFoldersAsync([Query] string? username, 
         [AliasAs("calculate_size")] bool? calculateSize,
         [AliasAs("ext_preload")] bool? extPreload,
-        [AliasAs("filter_empty_folder")] string? filterEmptyFolder,
+        [AliasAs("filter_empty_folder")] bool? filterEmptyFolder,
         [Query] int? offset, 
         [Query] int? limit,
         [AliasAs("with_session")] bool? withSession);

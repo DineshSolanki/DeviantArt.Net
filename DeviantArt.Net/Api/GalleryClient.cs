@@ -21,7 +21,7 @@ public partial class Client
     /// <param name="withSession">Whether to include session information.</param>
     /// <returns>A paginated list of gallery folders.</returns>
     public async Task<PaginatedBase<GalleryFolder>> GetGalleryFoldersAsync(string? username = null,
-        bool? calculateSize = null, bool? extPreload = null, string? filterEmptyFolder = null, int? offset = null, int? limit = null,
+        bool? calculateSize = null, bool? extPreload = null, bool? filterEmptyFolder = null, int? offset = null, int? limit = null,
         bool? withSession = null)
     {
         return await _api.GetGalleryFoldersAsync(username, calculateSize, extPreload, filterEmptyFolder, offset, limit, withSession);
@@ -66,12 +66,12 @@ public partial class Client
     /// <returns>A simple response indicating the result of the operation.</returns>
     public async Task<SimpleResponseBase> CopyDeviationsAsync(CopyDeviationsRequest request)
     {
-        var requeDictionary = new Dictionary<string, object>
+        var requestDictionary = new Dictionary<string, object>
         {
             { "target_folderid", request.TargetFolderId },
         };
-        requeDictionary.AddEnumerable("deviationids", request.DeviationIds);
-        return await _api.CopyDeviationsAsync(requeDictionary);
+        requestDictionary.AddEnumerable("deviationids", request.DeviationIds);
+        return await _api.CopyDeviationsAsync(requestDictionary);
     }
 
     /// <summary>
@@ -81,13 +81,13 @@ public partial class Client
     /// <returns>A simple response indicating the result of the operation.</returns>
     public async Task<SimpleResponseBase> MoveDeviationsAsync(MoveDeviationsRequest request)
     {
-        var requeDictionary = new Dictionary<string, object>
+        var requestDictionary = new Dictionary<string, object>
         {
             { "target_folderid", request.TargetFolderId },
             { "source_folderid", request.SourceFolderId }
         };
-        requeDictionary.AddEnumerable("deviationids", request.DeviationIds);
-        return await _api.MoveDeviationsAsync(requeDictionary);
+        requestDictionary.AddEnumerable("deviationids", request.DeviationIds);
+        return await _api.MoveDeviationsAsync(requestDictionary);
     }
 
     /// <summary>
