@@ -9,12 +9,12 @@ It provides a simple and easy-to-use interface for accessing various endpoints o
 - Token management
 - Supported Endpoints
     - [x] Browse
-    - [ ] Collections
+    - [x] Collections
     - [x] Comments
     - [x] Data
     - [x] Deviation
     - [ ] ~~Feed  - Deprecated by DeviantArt and scheduled for removal~~
-    - [ ] Gallery
+    - [x] Gallery
     - [x] Messages
     - [ ] ~~Notes - Deprecated by DeviantArt and scheduled for removal~~
     - [ ] Stash
