@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Models.Message;
-
-namespace DeviantArt.Net.Api;
+﻿namespace DeviantArt.Net.Api;
 
 public partial class Client
 {

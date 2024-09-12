@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Modules.Util.Formatters;
-
-namespace DeviantArt.Net.Models.User;
+﻿namespace DeviantArt.Net.Models.User;
 
 public class Friend : Watcher
 {

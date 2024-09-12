@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Text.Json;
 
 namespace DeviantArt.Net.Modules.Util.Formatters;
 

@@ -1,7 +1,4 @@
-﻿using DeviantArt.Net.Models.Deviation;
-using DeviantArt.Net.Modules;
-
-namespace DeviantArt.Net.Api;
+﻿namespace DeviantArt.Net.Api;
 
 /// <summary>
 /// Client class for interacting with DeviantArt API to manage deviations, journals, and literature.

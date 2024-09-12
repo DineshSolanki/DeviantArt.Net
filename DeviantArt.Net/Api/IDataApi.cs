@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Models.Data;
-
-namespace DeviantArt.Net.Api;
+﻿namespace DeviantArt.Net.Api;
 
 internal partial interface IDeviantArtApi
 {

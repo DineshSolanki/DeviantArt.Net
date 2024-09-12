@@ -1,6 +1,4 @@
 ﻿using DeviantArt.Net.Api.Handler;
-using DeviantArt.Net.Modules;
-using DeviantArt.Net.Modules.Util.Formatters;
 
 namespace DeviantArt.Net.Api;
 

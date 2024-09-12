@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using DeviantArt.Net.Models.User;
 
 namespace DeviantArt.Net.Modules;
 

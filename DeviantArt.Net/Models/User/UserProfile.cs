@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Models.Message;
-
-namespace DeviantArt.Net.Models.User;
+﻿namespace DeviantArt.Net.Models.User;
 
 using System;
 using System.Collections.Generic;

@@ -1,7 +1,4 @@
-﻿using DeviantArt.Net.Models.Deviation;
-using DeviantArt.Net.Models.User;
-
-namespace DeviantArt.Net.Api;
+﻿namespace DeviantArt.Net.Api;
 
 internal partial interface IDeviantArtApi
 {

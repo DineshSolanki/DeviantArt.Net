@@ -1,7 +1,4 @@
-﻿using DeviantArt.Net.Models.Deviation;
-using DeviantArt.Net.Modules;
-
-namespace DeviantArt.Net.Models.Deviation;
+﻿namespace DeviantArt.Net.Models.Deviation;
 
 public class journalCreationRequest
 {

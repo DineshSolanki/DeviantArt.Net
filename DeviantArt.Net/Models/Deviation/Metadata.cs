@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Models.User;
-
-namespace DeviantArt.Net.Models.Deviation;
+﻿namespace DeviantArt.Net.Models.Deviation;
 
 public class Metadata
 {

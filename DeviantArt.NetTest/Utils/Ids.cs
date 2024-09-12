@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-namespace DeviantArt.NetTest.Utils;
+﻿namespace DeviantArt.NetTest.Utils;
 
 public static class Ids
 {

@@ -1,7 +1,4 @@
-﻿using DeviantArt.Net.Models.Data;
-using DeviantArt.Net.Models.User;
-
-namespace DeviantArt.NetTest;
+﻿namespace DeviantArt.NetTest;
 
 [TestClass]
 public class UserTests : Testbase

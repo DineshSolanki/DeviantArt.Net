@@ -1,7 +1,4 @@
-﻿using DeviantArt.Net.Models.Deviation;
-using DeviantArt.Net.Modules.Util.Formatters;
-
-namespace DeviantArt.Net.Models.Message;
+﻿namespace DeviantArt.Net.Models.Message;
 
 public class Message
 {

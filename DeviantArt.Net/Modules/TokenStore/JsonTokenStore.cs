@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-
-namespace DeviantArt.Net.Modules.TokenStore;
+﻿namespace DeviantArt.Net.Modules.TokenStore;
 
 
 /// <summary>

@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-
-namespace DeviantArt.Net.Modules.Util.Formatters;
+﻿namespace DeviantArt.Net.Modules.Util.Formatters;
 
 public class UnixTimestampConverter : JsonConverter<DateTimeOffset>
 {

@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Models.Data;
-
-namespace DeviantArt.Net.Models.User;
+﻿namespace DeviantArt.Net.Models.User;
 
 public class ProfileUpdateRequest
 {

@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Modules.Util.Formatters;
-
-namespace DeviantArt.Net.Models.Deviation;
+﻿namespace DeviantArt.Net.Models.Deviation;
 
 public class FavouritedBy
 {

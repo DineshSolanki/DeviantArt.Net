@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Models.Deviation;
-
-namespace DeviantArt.NetTest;
+﻿namespace DeviantArt.NetTest;
 
 [TestClass]
 public class GalleryTests : Testbase

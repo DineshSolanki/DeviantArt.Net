@@ -1,7 +1,4 @@
-﻿using DeviantArt.Net.Exceptions;
-using DeviantArt.Net.Models.Message;
-
-namespace DeviantArt.NetTest;
+﻿namespace DeviantArt.NetTest;
 
 [TestClass]
 public class MessageClientTests : Testbase

@@ -1,8 +1,4 @@
-﻿using DeviantArt.Net.Models.Deviation;
-using DeviantArt.Net.Models.User;
-using DeviantArt.Net.Modules;
-
-namespace DeviantArt.Net.Api;
+﻿namespace DeviantArt.Net.Api;
 
 /// <summary>
 /// Client class for interacting with DeviantArt gallery-related API endpoints.

@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Models.Message;
-
-namespace DeviantArt.Net.Models;
+﻿namespace DeviantArt.Net.Models;
 
 public class CommentsPage : PageBase
 {

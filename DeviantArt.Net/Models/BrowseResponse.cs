@@ -1,6 +1,4 @@
-﻿using DeviantArt.Net.Models.Deviation;
-
-namespace DeviantArt.Net.Models;
+﻿namespace DeviantArt.Net.Models;
 
 public class BrowseResponse : PaginatedBase<Deviation.Deviation>
 {
