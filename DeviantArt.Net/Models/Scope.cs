@@ -29,6 +29,6 @@ public enum Scope
     [Description("gallery")] [EnumMember(Value = "gallery")]
     Gallery,
     
-    /*
-    Collection,*/
+    [Description("collection")] [EnumMember(Value = "collection")]
+    Collection
 }
